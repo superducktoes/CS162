@@ -10,7 +10,9 @@
 
 #include <iostream>
 #include "readMatrix.hpp"
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 void readMatrix(int *myMatrix, int sizeOfMatrix) {
 

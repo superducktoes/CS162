@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include "determinant.hpp"
-using namespace std;
+using std::cout;
 
 int determinant(int *myMatrix, int sizeOfMatrix) {
 
