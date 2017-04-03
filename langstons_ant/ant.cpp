@@ -24,6 +24,22 @@ int Ant::getYPosition() {
   return posY;
 }
 
+void Ant::setMaxXPosition(int maxX) {
+  maxX = maxX;
+}
+
+void Ant::setMaxYPosition(int maxY) {
+  maxY = maxY;
+}
+
+int Ant::getMaxXPosition() {
+  return maxX;
+}
+
+int Ant::getMaxYPosition() {
+  return maxY;
+}
+
 // returns 0 if white 2 if black
 int Ant::getCurrentColor() {
   int color;
