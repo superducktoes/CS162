@@ -65,7 +65,11 @@ void Ant::moveAnt() {
 }
 
 void Ant::moveAntLeft() { return; }
-void Ant::moveAntRight() {return; }
+void Ant::moveAntRight() { 
+  char direction = getAntFacing();
+return; 
+
+}
 // sets the direction that the ant is facing. Will be a char that is either
 // U, D, L, R
 void Ant::setAntFacing(char s) {

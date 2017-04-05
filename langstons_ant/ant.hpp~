@@ -16,7 +16,7 @@ public:
     setYPosition(y);
     setMaxXPosition(maxX);
     setMaxYPosition(maxY);
-    setAntFacing('U');
+    setAntFacing("U");
     board[getXPosition()][getYPosition()] = 1;
   }
   void setBoard(int**);
