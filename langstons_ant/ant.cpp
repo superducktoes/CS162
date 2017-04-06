@@ -150,6 +150,9 @@ void Ant::moveAntLeft() {
   case 'U':
     swapColors();
     posY--;
+    if(posY < 0) {
+      posY = (maxY - 1);
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('L');
@@ -158,6 +161,9 @@ void Ant::moveAntLeft() {
   case 'D':
     swapColors();
     posY++;
+    if(posY >= maxY) {
+      posY = 0;
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('R');
@@ -166,6 +172,9 @@ void Ant::moveAntLeft() {
   case 'L':
     swapColors();
     posX++;
+    if(posX >= maxX) {
+      posX = 0;
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('D');
@@ -174,6 +183,9 @@ void Ant::moveAntLeft() {
   case 'R':
     swapColors();
     posX--;
+    if(posX < 0) {
+      posX = (maxX - 1);
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('U');
