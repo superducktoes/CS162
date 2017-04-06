@@ -13,19 +13,19 @@ int** Ant::getBoard() {
 }
 
 void Ant::setXPosition(int x) {
-  posX = x;
+  posY = x;
 }
 
 void Ant::setYPosition(int y) {
-  posY = y;
+  posX = y;
 }
 
 int Ant::getXPosition() {
-  return posX;
+  return posY;
 }
 
 int Ant::getYPosition() {
-  return posY;
+  return posX;
 }
 
 void Ant::setMaxXPosition(int mX) {
@@ -91,36 +91,36 @@ void Ant::moveAntRight() {
   switch(directionFacing) {
   case 'U':
     swapColors();
-    posY++;
+    posX++;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('R');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'D':
     swapColors();
-    posY--;
+    posX--;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('L');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'L':
     swapColors();
-    posX--;
+    posY--;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('U');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'R':
     swapColors();
-    posX++;
+    posY++;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('D');
     board[getXPosition()][getYPosition()] = 1;
@@ -136,36 +136,36 @@ void Ant::moveAntLeft() {
   switch(directionFacing) {
   case 'U':
     swapColors();
-    posY--;
+    posX--;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('L');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'D':
     swapColors();
-    posY++;
+    posX++;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('R');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'L':
     swapColors();
-    posX++;
+    posY++;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('D');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'R':
     swapColors();
-    posX--;
+    posY--;
     collisionChecker();
-    currentTile = board[posX][posY];
+    currentTile = board[posY][posX];
     setTileColor(currentTile);
     setAntFacing('U');
     board[getXPosition()][getYPosition()] = 1;
@@ -192,23 +192,23 @@ void Ant::swapColors() {
   int color = getTileColor();
     
   if(color == 0) {
-    board[posX][posY] = 2;
+    board[posY][posX] = 2;
   } else {
-    board[posX][posY] = 0;
+    board[posY][posX] = 0;
   }
 }
 
 void Ant::collisionChecker() {
-  if(posY >= maxY) {
-    posY = 0;
-  }
-  if(posY < 0) {
-    posY = (maxY - 1);
+  if(posX >= maxY) {
+    posX = 0;
   }
   if(posX < 0) {
-    posX = (maxX - 1);
+    posX = (maxY - 1);
   }
-  if(posX >= maxX) {
-    posX = 0;
+  if(posY < 0) {
+    posY = (maxX - 1);
+  }
+  if(posY >= maxX) {
+    posY = 0;
   }
 }

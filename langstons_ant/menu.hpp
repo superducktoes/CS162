@@ -3,6 +3,7 @@
 using std::string;
 
 int checkNumber(string);
+int checkNumberRange(string,int,int);
 bool checkCharacter(string);
 
 #endif

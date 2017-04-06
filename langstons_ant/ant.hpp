@@ -4,8 +4,8 @@
 
 class Ant {
 private:
-  int posX;
   int posY;
+  int posX;
   int** board;
   int maxX;
   int maxY;

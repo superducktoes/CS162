@@ -29,11 +29,11 @@ void showBoard(int** gameBoard, int rows, int columns) {
     for(int j = 0; j < columns; j++) {
       
       if(gameBoard[i][j] == 1) {
-	cout << " @ ";
+	cout << "@";
       }else if(gameBoard[i][j] == 0) {
-	cout << "   "; //CHANGE THIS BEFORE SUBMITTING!!
+	cout << " "; //CHANGE THIS BEFORE SUBMITTING!!
       } else if(gameBoard[i][j] == 2) {
-	cout << " # ";
+	cout << "#";
       }
 
     }
