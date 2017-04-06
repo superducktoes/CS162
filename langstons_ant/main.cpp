@@ -49,10 +49,6 @@ int main() {
     antPosY = generateRandom(columns);  
   }
   
-  // subtract 1 for the count by 0 offset
-  //antPosX = antPosX - 1;
-  //antPosY = antPosY - 1;
-
   // dynamically creates the array for the board
   // needs to be de-allocated later still
   boardArray = newBoard(rows,columns);  
@@ -73,12 +69,15 @@ int main() {
     cout << "Currently on step " << (i+1) << " of " << antSteps << endl;
     gameAnt.moveAnt();
     showBoard(boardArray,rows,columns);
+    cout << "\n\nHold Enter to have the ant move" << endl;
     cin.clear();
     cin.ignore();
     cin.get(ch);
   }
 
-  showBoard(boardArray,rows,columns);
-  cout << "final spots: " << gameAnt.getXPosition() << "   " << gameAnt.getYPosition() << endl;
+  cout << "Finished! " << endl;
+  delete [] boardArray;
+  boardArray = 0;
+  
   return 0;
 }
