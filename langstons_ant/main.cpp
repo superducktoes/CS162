@@ -33,7 +33,6 @@ int main() {
 
   rows = checkNumber("How many rows do you want the board to be? ");
   columns = checkNumber("How many columns do you want the board to be? ");
-
   antSteps = checkNumber("How many steps should the ant take? ");
 
   // checks to see whether the user entered y or n and returns a true or false
@@ -56,14 +55,13 @@ int main() {
 
   // dynamically creates the array for the board
   // needs to be de-allocated later still
-  boardArray = newBoard(rows,columns);
+  boardArray = newBoard(rows,columns);  
   Ant gameAnt(boardArray,antPosX,antPosY,rows,columns,antSteps); // create our ant object
   cout << "This is the board that  we're starting with: " << endl;
   showBoard(boardArray,rows,columns);
   // this needs to display as +1 because of counting by 0
   cout << "Starting at position: " << (gameAnt.getXPosition() + 1) << " " << (gameAnt.getYPosition() + 1) << endl;
   cout << "Now lets let the little guy loose!" << endl;
-  cout << "color for the ant is: " << gameAnt.getTileColor();
   cout << "Press enter to start! " << endl;
 
   cin.clear();

@@ -28,12 +28,12 @@ int Ant::getYPosition() {
   return posY;
 }
 
-void Ant::setMaxXPosition(int maxX) {
-  maxX = maxX;
+void Ant::setMaxXPosition(int mX) {
+  maxX = mX;
 }
 
-void Ant::setMaxYPosition(int maxY) {
-  maxY = maxY;
+void Ant::setMaxYPosition(int mY) {
+  maxY = mY;
 }
 
 int Ant::getMaxXPosition() {
@@ -91,32 +91,48 @@ void Ant::moveAntRight() {
   int currentTile = 0;
   switch(directionFacing) {
   case 'U':
+    cout << "u - HERE";
     swapColors();
     posY++;
+    if(posY >= maxY) {
+      posY = 0;
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('R');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'D':
+    cout << "d - here";
     swapColors();
     posY--;
+    if(posY < 0) {
+      posY = (maxY - 1);
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('L');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'L':
+    cout << "l - here";
     swapColors();
     posX--;
+    if(posX < 0) {
+      posX = (maxX - 1);
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('U');
     board[getXPosition()][getYPosition()] = 1;
     break;
   case 'R':
+    cout << "r - here";
     swapColors();
     posX++;
+    if(posX >= maxX) {
+      posX = 0;
+    }
     currentTile = board[posX][posY];
     setTileColor(currentTile);
     setAntFacing('D');
@@ -191,3 +207,14 @@ void Ant::swapColors() {
   }
 }
 
+void Ant::leftRightCollision() {
+
+  if(posX > maxX) {
+    setXPosition(0);
+  } else if(posX < 0) {
+    setXPosition(maxX);
+  } else {
+    posY++;
+  }
+}
+void Ant::upDownCollision() { return; }

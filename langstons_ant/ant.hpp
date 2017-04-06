@@ -46,6 +46,8 @@ public:
   void setTileColor(int);
   int getTileColor();
   void swapColors();
+  void leftRightCollision();
+  void upDownCollision();
 };
 
 #endif
