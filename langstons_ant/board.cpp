@@ -31,7 +31,9 @@ void showBoard(int** gameBoard, int rows, int columns) {
       if(gameBoard[i][j] == 1) {
 	cout << " @ ";
       }else if(gameBoard[i][j] == 0) {
-	cout << " _ "; //CHANGE THIS BEFORE SUBMITTING!!
+	cout << "   "; //CHANGE THIS BEFORE SUBMITTING!!
+      } else if(gameBoard[i][j] == 2) {
+	cout << " # ";
       }
 
     }

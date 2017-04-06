@@ -57,21 +57,30 @@ int main() {
   // dynamically creates the array for the board
   // needs to be de-allocated later still
   boardArray = newBoard(rows,columns);
-  Ant gameAnt(boardArray,antPosX,antPosY,rows,columns); // maybe the next game I can call him atom ant!
+  Ant gameAnt(boardArray,antPosX,antPosY,rows,columns,antSteps); // create our ant object
   cout << "This is the board that  we're starting with: " << endl;
   showBoard(boardArray,rows,columns);
-  cout << "Starting at position: " << gameAnt.getXPosition() << " " << gameAnt.getYPosition() << endl;
+  // this needs to display as +1 because of counting by 0
+  cout << "Starting at position: " << (gameAnt.getXPosition() + 1) << " " << (gameAnt.getYPosition() + 1) << endl;
   cout << "Now lets let the little guy loose!" << endl;
+  cout << "color for the ant is: " << gameAnt.getTileColor();
   cout << "Press enter to start! " << endl;
+
   cin.clear();
-  
   cin.ignore();
   cin.get(ch);
-  
+
   for(int i = 0; i < antSteps; i++) {
     std::system("clear");
     cout << "Currently on step " << (i+1) << " of " << antSteps << endl;
+    gameAnt.moveAnt();
+    showBoard(boardArray,rows,columns);
+    cin.clear();
+    cin.ignore();
+    cin.get(ch);
   }
-  
+
+  showBoard(boardArray,rows,columns);
+  cout << "final spots: " << gameAnt.getXPosition() << "   " << gameAnt.getYPosition() << endl;
   return 0;
 }
