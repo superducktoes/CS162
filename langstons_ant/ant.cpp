@@ -1,15 +1,22 @@
+/************************************************************************
+ *
+ * Author: Nick Roy
+ * Date: 4/6/2017
+ * Description: Ant class. Builds the ant and handles the decision making
+ * for what happens when turning left/right based on the white/black 
+ * square that it is on.
+ *
+ ************************************************************************/
+
 #include <iostream>
 #include "ant.hpp"
 
 using std::cout;
 using std::endl;
 
+// from the board we build
 void Ant::setBoard(int** b) {
   board = b;
-}
-
-int** Ant::getBoard() {
-  return board;
 }
 
 void Ant::setXPosition(int x) {
@@ -36,26 +43,16 @@ void Ant::setMaxYPosition(int mY) {
   maxY = mY;
 }
 
-int Ant::getMaxXPosition() {
-  return maxX;
-}
-
-int Ant::getMaxYPosition() {
-  return maxY;
-}
-
 void Ant::setAntMoves(int m) {
   antMoves = m;
 }
 
-int Ant::getAntMoves() {
-  return antMoves;
-}
-
+// sets the next tile color
 void Ant::setTileColor(int c) {
   antTileColor = c;
 }
 
+// gets the color of the tile the ant is on
 int Ant::getTileColor() {
   return antTileColor;
 }
@@ -131,6 +128,7 @@ void Ant::moveAntRight() {
  }
 }
 
+// same as above just differnt orientations based on turning left
 void Ant::moveAntLeft() {
   int currentTile = 0;
   switch(directionFacing) {
@@ -181,9 +179,6 @@ void Ant::moveAntLeft() {
 void Ant::setAntFacing(char s) {
   directionFacing = s;
 }
-char Ant::getAntFacing() {
-  return directionFacing;
-}
 
 void Ant::swapColors() {
 
@@ -198,6 +193,8 @@ void Ant::swapColors() {
   }
 }
 
+// runs with each movement iteration. depending on whether the ant moved left/right or up/down
+// it checks to see if the ant is at the max or 0 and then wraps around to the other side.
 void Ant::collisionChecker() {
   if(posX >= maxY) {
     posX = 0;

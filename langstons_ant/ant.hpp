@@ -1,3 +1,10 @@
+/************************************************
+ *
+ * Author: Nick Roy
+ * Date: 4/6/2017
+ * Description: Header file for the ant class
+ *
+ **********************************************/
 
 #ifndef ANT_HPP
 #define ANT_HPP
@@ -25,24 +32,18 @@ public:
     setTileColor(0);
   }
 
-  //need to go through this and comment/make sure still in use
   void setBoard(int**);
-  int** getBoard();
   void setXPosition(int);
   void setYPosition(int);
   int getXPosition();
   int getYPosition();
   void setMaxXPosition(int);
   void setMaxYPosition(int);
-  int getMaxXPosition();
-  int getMaxYPosition();
   void moveAnt();
   void moveAntLeft();
   void moveAntRight();
   void setAntFacing(char);
-  char getAntFacing();
   void setAntMoves(int);
-  int getAntMoves();
   void setTileColor(int);
   int getTileColor();
   void swapColors();

@@ -1,3 +1,11 @@
+/********************************************************
+ * 
+ * Author: Nick Roy
+ * Date: 4/6/2017
+ * Description: Main file for the langton's ant program
+ *
+ ********************************************************/
+
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
@@ -19,7 +27,7 @@ int generateRandom(int max) {
   return randomNum;
 }
   
-
+// for the menu class move the if/else to a menu to prompt and keep checking and the random function above
 int main() {
 
   int **boardArray;
@@ -37,16 +45,16 @@ int main() {
   antSteps = checkNumber("How many steps do you want the ant to take: ");
 
   // checks to see whether the user entered y or n and returns a true or false
-  userSetStart = checkCharacter("Would you like to set the position of the ant? (y/n) ");
+  userSetStart = checkCharacter("Would you like to set the position of the ant? (y/n) ",'y','n');
   
   // gets the start position from the ant either from the user or
   // randomly generated if they want or if they don't enter y or n
   
   if(userSetStart) {
     cout << "Enter the starting row for the ant between 0 and " << (rows-1) << endl;
-    antPosX = checkNumber("Starting row: ");
+    antPosX = checkNumberRange("Starting row: ",0,(rows-1));
     cout << "Enter the starting column for the ant between 0 and " << (columns-1) << endl;
-    antPosY = checkNumber("Starting column: ");
+    antPosY = checkNumberRange("Starting column: ",0,(columns-1));
   } else {
     cout << "Looks like I'll be picking the starting point for the ant!";
     antPosX = generateRandom(rows);
@@ -66,12 +74,12 @@ int main() {
   cin.clear();
   cin.ignore();
   cin.get(ch);
-
+  
   for(int i = 0; i < antSteps; i++) {
     std::system("clear");
-    cout << "Currently on step " << (i+1) << " of " << antSteps << endl;
     gameAnt.moveAnt();
     showBoard(boardArray,rows,columns);
+    cout << "\nCurrently on step " << (i+1) << " of " << antSteps << endl;
     if((i+1) ==  antSteps) {
       cout << "\n\nFinished! " << endl;
     } else {
