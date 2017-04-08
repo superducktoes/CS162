@@ -12,11 +12,23 @@
 
 #include <iostream>
 #include <locale>
+#include <time.h>
+#include <cstdlib>
 #include "menu.hpp"
 using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+
+int generateRandom(int max) {
+
+  int randomNum;
+  srand(time(NULL));
+  // -1 to take care of the array count by 0 offset or else it segfaults
+  randomNum = rand() % (max-1) + 1;
+
+  return randomNum;
+}
 
 //verifies whether or not the input is an integer and returns it
 int checkNumber(string message) {
@@ -82,4 +94,11 @@ bool checkCharacter(string message, char letOne, char letTwo) {
   }
 
   return randomStartStatus;
+}
+
+void blankEnter() {
+
+  cin.clear();
+  cin.ignore();
+  cin.ignore();
 }

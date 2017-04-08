@@ -12,8 +12,9 @@
 #define MENU_HPP
 using std::string;
 
+int generateRandom(int);
 int checkNumber(string);
 int checkNumberRange(string,int,int);
 bool checkCharacter(string,char,char);
-
+void blankEnter();
 #endif

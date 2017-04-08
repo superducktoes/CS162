@@ -11,7 +11,7 @@
 #include "board.hpp"
 using std::cin;
 using std::cout;
-using std:: endl;
+using std::endl;
 using std::string;
 
 int** newBoard(int rows, int columns) {

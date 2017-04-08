@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <cstdlib>
-#include <time.h>
 #include "board.hpp"
 #include "menu.hpp"
 #include "ant.hpp"
@@ -17,17 +16,6 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int generateRandom(int max) {
-
-  int randomNum;
-  srand(time(NULL));
-  // -1 to take care of the array count by 0 offset or else it segfaults
-  randomNum = rand() % (max-1) + 1;
-
-  return randomNum;
-}
-  
-// for the menu class move the if/else to a menu to prompt and keep checking and the random function above
 int main() {
 
   int **boardArray;
@@ -35,7 +23,6 @@ int main() {
   int antSteps; // how many steps should our ant take?
   int antPosX = 0, antPosY = 0;
   bool userSetStart;
-  char ch;
   
   cout << "This is a simulation of Langston's Ant" << endl;
   cout << "Let's get started with the simulation" << endl;
@@ -71,9 +58,7 @@ int main() {
   cout << "Now lets let the little guy loose!" << endl;
   cout << "Press enter to start!\n " << endl;
   
-  cin.clear();
-  cin.ignore();
-  cin.get(ch);
+  blankEnter();
   
   for(int i = 0; i < antSteps; i++) {
     std::system("clear");
@@ -85,8 +70,7 @@ int main() {
     } else {
       cout << "\n\nHold Enter to have the ant move" << endl;
     }
-    cin.clear();
-    cin.get();
+    blankEnter();
   }
   
   // free up our board constructed before exiting  
