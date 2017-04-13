@@ -24,9 +24,8 @@ int main() {
   int antPosX = 0, antPosY = 0;
   bool userSetStart;
   
-  cout << "This is a simulation of Langston's Ant" << endl;
-  cout << "Let's get started with the simulation" << endl;
-
+  showMenu(1);
+    
   rows = checkNumber("How many rows do you want on the board: ");
   columns = checkNumber("How many columns do you want on the board: ");
   antSteps = checkNumber("How many steps do you want the ant to take: ");
@@ -55,8 +54,7 @@ int main() {
   // create our ant object
   Ant gameAnt(boardArray,antPosX,antPosY,rows,columns,antSteps);
   
-  cout << "Now lets let the little guy loose!" << endl;
-  cout << "Press enter to start!\n " << endl;
+  showMenu(2);
   
   blankEnter();
   

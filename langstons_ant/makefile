@@ -1,5 +1,7 @@
+program_name = langtons_ant
+
 langtons_ant: main.o board.o menu.o ant.o
-	g++ main.o board.o menu.o ant.o -o langtons_ant
+	g++ main.o board.o menu.o ant.o -o $(program_name)
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -15,3 +17,5 @@ ant.o: ant.cpp ant.hpp
 
 clean:
 	rm *.o
+run:
+	./$(program_name)

@@ -17,4 +17,5 @@ int checkNumber(string);
 int checkNumberRange(string,int,int);
 bool checkCharacter(string,char,char);
 void blankEnter();
+void showMenu(int);
 #endif

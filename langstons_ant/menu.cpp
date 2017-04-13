@@ -102,3 +102,19 @@ void blankEnter() {
   cin.ignore();
   cin.ignore();
 }
+
+void showMenu(int n) {
+
+  switch(n) {
+  case 1:
+    cout << "This is a simulation of Langston's Ant" << endl;
+    cout << "Let's get started with the simulation" << endl;
+    break;
+  case 2:
+    cout << "Now lets let the little guy loose!" << endl;
+    cout << "Press enter to start!\n " << endl;
+    break;
+  default:
+    cout << "Error, wrong number passed to menu" << endl;
+  }
+}
