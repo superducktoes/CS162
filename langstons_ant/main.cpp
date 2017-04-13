@@ -52,7 +52,7 @@ int main() {
   // dynamically creates the array for the board
   boardArray = newBoard(rows,columns);  
   // create our ant object
-  Ant gameAnt(boardArray,antPosX,antPosY,rows,columns,antSteps);
+  Ant gameAnt(boardArray,antPosX,antPosY,columns,rows,antSteps);
   
   showMenu(2);
   
@@ -71,7 +71,7 @@ int main() {
     blankEnter();
   }
   
-  // free up our board constructed before exiting  
+  // free up our board constructed before exiting
   delete [] boardArray;
   boardArray = 0;
   
