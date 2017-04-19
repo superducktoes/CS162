@@ -14,9 +14,11 @@
 
 class Dice {
 private:
-  int numberOfSides;
   int diceValue;
+protected:
+  int numberOfSides;
 public:
+
   Dice(int s)
   : numberOfSides(s)
   {

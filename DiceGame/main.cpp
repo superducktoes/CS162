@@ -7,6 +7,7 @@
   *****************************************************************************/
 #include <iostream>
 #include "game.hpp"
+#include "menu.hpp"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -35,7 +36,7 @@ int main() {
   cout << "How many sides would you like on your die player two? ";
   cin >> playerTwoDieSides;
   cout << "And is player two's dice a loaded or unloaded dice? (L or U) ";
-  cin >> playerTwoLoaded;
+cin >> playerTwoLoaded;
 
   cout << "And the final question, how many rounds would you like to play? ";
   cin >> numberOfTurns;
