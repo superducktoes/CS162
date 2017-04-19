@@ -2,7 +2,7 @@
  *
  * Author: Nick Roy
  * Date: 4/6/2017
- * Description: Menu class. functions take a string to display and 
+ * Description: Menu class. functions take a string to display and
  * then validates input.
  *
  * Sources:
@@ -32,14 +32,14 @@ int generateRandom(int max) {
 
 //verifies whether or not the input is an integer and returns it
 int checkNumber(string message) {
-  
+
   int number;
   bool continueLoop = true;
-  
+
   while(continueLoop == true) {
     cout << message;
     cin >> number;
-    
+
     if(cin.good() && (number >= 0)) {
       continueLoop = false;
     } else if(cin.fail()) {
@@ -49,7 +49,7 @@ int checkNumber(string message) {
       cout << "Your input was not valid." << endl;
     }
   }
-  
+
   return number;
 }
 
@@ -84,7 +84,7 @@ bool checkCharacter(string message, char letOne, char letTwo) {
   char letterTwo = std::tolower(letTwo);
   cout << message;
   cin >> input;
-  
+
   if(std::isalpha(input) && input == letterOne) {
     randomStartStatus = true;
   } else if(std::isalpha(input) || input == letterTwo) {
@@ -97,7 +97,6 @@ bool checkCharacter(string message, char letOne, char letTwo) {
 }
 
 void blankEnter() {
-
   cin.clear();
   cin.ignore();
   cin.ignore();
