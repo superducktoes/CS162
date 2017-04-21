@@ -22,10 +22,7 @@ public:
   Dice(int s)
   : numberOfSides(s)
   {
-    // this needs to stay here to make sure that the random number is only
-    // seeded once: http://stackoverflow.com/questions/33711219/random-number-generator-function-in-class
-    unsigned seed = time(0);
-    srand(seed);
+
     diceValue = 0;
   }
   int generateRoll();

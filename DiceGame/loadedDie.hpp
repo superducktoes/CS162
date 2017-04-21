@@ -1,3 +1,10 @@
+/*******************************************************************************
+  *
+  * Author: Nick Roy
+  * Date: 4/23/2017
+  * Description: LoadedDie subclass. Inherits from the dice superclass
+  *
+  *****************************************************************************/
 #ifndef LOADEDDIE_HPP
 #define LOADEDDIE_HPP
 #include "dice.hpp"
@@ -9,8 +16,6 @@ public:
   LoadedDie(int s)
   : Dice(s)
   {
-    unsigned seed = time(0);
-    srand(seed);
   }
   int returnLoadedRoll();
 };

@@ -18,4 +18,5 @@ int checkNumberRange(string,int,int);
 char checkCharacter(string,char,char);
 void blankEnter();
 void showMenu(int);
+char menuPlayOn();
 #endif

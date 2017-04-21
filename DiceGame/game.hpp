@@ -25,7 +25,7 @@ public:
     playerOneScore = 0;
     playerTwoScore = 0;
   }
-
+  ~Game();
   void startGame();
 
 };

@@ -5,6 +5,8 @@
  * Description: Menu class. functions take a string to display and
  * then validates input.
  *
+ * modified on 4/23/2017
+ *
  * Sources:
  * - cin.good/cin.fail: http://stackoverflow.com/questions/13440831/how-do-i-check-if-input-is-an-integer-string
  *
@@ -82,10 +84,16 @@ char checkCharacter(string message, char letOne, char letTwo) {
   return returnChar;
 }
 
+char menuPlayOn() {
+  char c = checkCharacter("The game has ended. Do you want to play again? ( Y or N )", 'Y','N');
+
+  return c;
+}
+
 void blankEnter() {
   char c;
   cin.clear();
   cin.clear();
-  cout << "Press ENTER to continue" << endl;
+  cout << "\nPress ENTER to continue" << endl;
   cin.ignore();
 }
