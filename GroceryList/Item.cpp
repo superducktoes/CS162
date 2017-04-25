@@ -32,5 +32,5 @@ void Item::printItemInfo() {
 }
 
 double Item::getExtendedPrice() {
-  return price * quantity;
+  return extendedPrice;
 }

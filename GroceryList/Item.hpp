@@ -18,10 +18,13 @@ private:
   string unitType;
   int quantity;
   double price;
+  double extendedPrice;
+
 public:
   Item(string i, string u, int q, double p)
   : itemName(i), unitType(u), quantity(q), price(p)
   {
+    extendedPrice = q*p;
   }
   string getItemName();
   string getItemUnitType();
