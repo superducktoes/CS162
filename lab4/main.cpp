@@ -1,16 +1,18 @@
 /*******************************************************************************
-  *
-  * Author: Nick Roy
-  * Date: 4/30/2017
-  * Description: University system made up of three classes. Student and Instructor
-  * inherit from person. Building class stores information about the buildings
-  * University class stores all buildings and students/instructors.
-  *
-  *****************************************************************************/
+ *
+ * Author: Nick Roy
+ * Date: 4/30/2017
+ * Description: University system made up of three classes.
+ * Building class stores information about the buildings
+ * University class stores all buildings and students/instructors.
+ *
+ *****************************************************************************/
 
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "menu.hpp"
 
 using std::cout;
 using std::endl;
@@ -18,29 +20,37 @@ using std::string;
 using std::vector;
 using std::cin;
 
-class Person {
-protected:
-  string name = " ";
-  int age = 0;
-public:
-void setName(string n) {
-  name = n;
-}
-void setAge(int a) {
-  age = a;
-}
+/*******************************************************************************
+* Person class.
+* Student and Instructor are dependant on Person.
+* Student and instructor print appropirate information when called.
+*******************************************************************************/
 
-virtual void do_work(int){}
-virtual void printPersonInformation(){}
+class Person {
+  protected:
+    string name = " ";
+  int age = 0;
+  public:
+    void setName(string n) {
+      name = n;
+    }
+  void setAge(int a) {
+    age = a;
+  }
+
+  virtual void do_work(int) {}
+  virtual void printPersonInformation() {}
 };
 
 // inherits from Person
-class Student:public Person {
-private:
-  double gpa=0.0;
-public:
-  void setGpa(double d) { gpa = d; }
-  double getGpa() { return gpa; }
+class Student: public Person {
+  private: double gpa = 0.0;
+  public: void setGpa(double d) {
+    gpa = d;
+  }
+  double getGpa() {
+    return gpa;
+  }
   void do_work(int h) {
     cout << name << " did " << h << " hours of homework!" << endl;
   }
@@ -51,11 +61,13 @@ public:
 
 // inherits from Person
 class Instructor: public Person {
-private:
-  int rating = 0;
-public:
-  void setRating(int r) { rating = r; }
-  int getRating() { return rating; }
+  private: int rating = 0;
+  public: void setRating(int r) {
+    rating = r;
+  }
+  int getRating() {
+    return rating;
+  }
   void do_work(int h) {
     cout << name << " graded papers for " << h << " hours." << endl;
   }
@@ -63,48 +75,117 @@ public:
     cout << "Student Name: " << name << "\nAge: " << age << "\nRating: " << rating << endl;
   }
 };
-// default constructor takes all of the necesary information
+
+/*******************************************************************************
+* Building class. Takes the name, size, and address in the constructors
+*
+* printBuildingInformation prints out information about any building objects
+*******************************************************************************/
+
 class Building {
-private:
-  string buildingName;
+  private:
+    string buildingName;
   double buildingSize;
   string buildingAddress;
-public:
-  Building(string bN, double bS, string bA)
+  public:
+    Building(string bN, double bS, string bA)
     : buildingName(bN), buildingSize(bS), buildingAddress(bA)
-  {
-  }
+    {
+    }
 
   void printBuildingInformation() {
     cout << "\nBuilding Name: " << buildingName << "\nBuilding Address: " << buildingAddress << "\nBuilding Size: " << buildingSize << endl;
   }
 };
 
-// University has functions for adding to the vectors storing buildings and people
+/*******************************************************************************
+* University class.
+* Constructor doesn't take any arguments.
+*
+* addBuildingToVector and addPersonToVector takes the object and adds to the
+* vector.
+* print functions loop through the vectors and prints out everything
+*******************************************************************************/
+
 class University {
-private:
-  string universityName = "Oregon State University";
-  vector<Building> buildingVector;
-  vector<Person*> personVector;
-public:
-  void printUniversityName() { cout << universityName << endl; }
-  void addBuildingToVector(Building b) { buildingVector.push_back(b); }
+  private:
+  vector <Building> buildingVector;
+  vector <Person*> personVector;
+  public:
+    void printUniversityName() {
+      cout << "Oregon State University" << endl;
+    }
+  void addBuildingToVector(Building b) {
+    buildingVector.push_back(b);
+  }
   void printBuildingVector();
-  void addPersonToVector(Person* p) { personVector.push_back(p); }
+  void addPersonToVector(Person* p) {
+    personVector.push_back(p);
+  }
   void printPersonVector();
 };
 
 void University::printBuildingVector() {
   cout << "Number of buildings on campus: " << buildingVector.size() << endl;
-  for(int i=0; i<buildingVector.size(); i++) {
+  for (int i = 0; i < buildingVector.size(); i++) {
     buildingVector[i].printBuildingInformation();
   }
 }
 
 void University::printPersonVector() {
   cout << "Number of students: " << personVector.size() << endl;
-  for(int j=0; j<personVector.size(); j++) {
-    personVector[j]->printPersonInformation();
+  for (int j = 0; j < personVector.size(); j++) {
+    personVector[j] -> printPersonInformation();
+  }
+}
+
+void handleDoWork() {
+  char userLetter;
+  bool carryOn = true;
+  string personName;
+  int age;
+  double gpaRating; // used whether a student or instructor is created
+  int hoursWorked;
+
+  while(carryOn == true) {
+    cout << ": ";
+    cin >> userLetter;
+    if(userLetter == 's' || userLetter == 'S') {
+      Student s;
+      Person* ptrStudent;
+      cin.clear();
+      cin.ignore();
+      cout << "Enter the name of the student: ";
+      getline(cin,personName);
+      age = checkNumber("Enter the age of the student: ");
+      gpaRating = checkNumberRange("Enter the GPA of the student: ", 0.0,4.0);
+      hoursWorked = checkNumber("Enter the number of hours worked: ");
+      s.setName(personName);
+      s.setAge(age);
+      s.setGpa(gpaRating);
+      ptrStudent = &s;
+      ptrStudent->do_work(hoursWorked);
+      carryOn = false;
+    } else if(userLetter == 'i' || userLetter == 'I') {
+      Instructor i;
+      Person* ptrInstructor;
+      carryOn = false;
+      cin.clear();
+      cin.ignore();
+      cout << "Enter the name of the instructor: ";
+      getline(cin,personName);
+      age = checkNumber("Enter the age of the instructor: ");
+      gpaRating = checkNumberRange("What is the instructors rating: ",0.0,5.0);
+      hoursWorked = checkNumber("Enter the number of hours worked: ");
+      i.setName(personName);
+      i.setAge(age);
+      i.setRating(gpaRating);
+      ptrInstructor = &i;
+      ptrInstructor->do_work(hoursWorked);
+      carryOn = false;
+    } else {
+      cout << "Please enter either S or I. " << endl;
+    }
   }
 }
 
@@ -116,13 +197,11 @@ int main() {
   // instantiate all of our necessary constructors
   Student s;
   Instructor i;
-  Building b1("AS Adair Barn #1-Soap CR", 1652, "28120 BEEF BARN RD
-CORVALLIS, OR 97330");
-  Building b2("Filtering Plant (Langton)", 1741, "2350 SW JEFFERSON WAY
-CORVALLIS, OR 97330")
+  Building b1("AS Adair Barn #1-Soap CR", 1652, "28120 BEEF BARN RD CORVALLIS OR 97330");
+  Building b2("Filtering Plant (Langton)", 1741, "2350 SW JEFFERSON WAY CORVALLIS OR 97330");
   University u;
-  Person* ptrStudent;
-  Person* ptrInstructor;
+  Person * ptrStudent;
+  Person * ptrInstructor;
 
   // set the instructor and the student
   s.setName("Nick");
@@ -135,8 +214,6 @@ CORVALLIS, OR 97330")
   // this is where the magic happens
   ptrStudent = &s;
   ptrInstructor = &i;
-  ptrStudent->do_work(5);
-  ptrInstructor->do_work(5);
 
   // add our building to the university vector
   u.addBuildingToVector(b1);
@@ -146,29 +223,30 @@ CORVALLIS, OR 97330")
   u.addPersonToVector(ptrStudent);
   u.addPersonToVector(ptrInstructor);
 
-  while(carryOn == true) {
+  while (carryOn == true) {
+    u.printUniversityName();
+    cout << "University System Management Tool" << endl;
     cout << "1. Print the information about the buildings." << endl;
     cout << "2. Print information about everyone at the university." << endl;
     cout << "3. Choose a person to do work." << endl;
-    cout << "4. Exit the program. " << endl;
-    cout << endl;
-    cin >> userInput;
+    userInput = checkNumber("4. Exit the program. ");
 
     switch (userInput) {
-      case 1:
-        u.printBuildingVector();
-        break;
-      case 2:
-        u.printPersonVector();
-        break;
-      case 3:
-        cout << "whatever for right now" << endl;
-        break;
-      case 4:
-        carryOn = false;
-        break;
-      default:
-        cout << "please enter an option between 1 and 4." << endl;
+    case 1:
+      u.printBuildingVector();
+      break;
+    case 2:
+      u.printPersonVector();
+      break;
+    case 3:
+      cout << "Do you want to have a student or instructor do work? ( S or I )" << endl;
+      handleDoWork();
+      break;
+    case 4:
+      carryOn = false;
+      break;
+    default:
+      cout << "Please enter an option between 1 and 4." << endl;
     }
   }
   return 0;
