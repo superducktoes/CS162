@@ -10,6 +10,7 @@
 #include "Item.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 using std::cout;
 using std::endl;
 using std::string;
@@ -28,7 +29,8 @@ double Item::getPrice() {
 }
 
 void Item::printItemInfo() {
-  cout << " Item name: " << itemName << " Item Unit: " << unitType << " Quantity: " << quantity << " Price: " << price << endl;
+  cout << std::fixed << std::showpoint << std::setprecision(2);
+  cout << " Item name: " << itemName << " Item Unit: " << unitType << " Quantity: " << quantity << " Price: " << price << " Extended Price: " << extendedPrice << endl;
 }
 
 double Item::getExtendedPrice() {
