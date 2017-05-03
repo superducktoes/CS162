@@ -1,3 +1,12 @@
+/*******************************************************************************
+ *
+ * Author: Nick Roy
+ * Date: 5/7/2017
+ * Description: Lab 5 that reverses a string, calculates a triangular number,
+ * and the sum of the int's in an array.
+ *
+ *****************************************************************************/
+ 
 #include <iostream>
 #include <string>
 
@@ -13,8 +22,11 @@ int sumArray(int numberArray[], int arrayLength) {
 
   int position = arrayLength - 1;
 
-  if(position > 1) {
+  if(position >= 1) {
     return numberArray[position] + sumArray(numberArray,position);
+  } else if(position == 0) {
+    // really this covers if there is only one element in the array.
+    return numberArray[position];
   } else {
     return 0;
   }

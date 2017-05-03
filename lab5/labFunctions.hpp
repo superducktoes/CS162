@@ -1,6 +1,15 @@
+/*******************************************************************************
+ *
+ * Author: Nick Roy
+ * Date: 5/7/2017
+ * Description: Lab 5 that reverses a string, calculates a triangular number,
+ * and the sum of the int's in an array.
+ *
+ *****************************************************************************/
+ 
 #ifndef LABFUNCTIONS_HPP
 #define LABFUNCTIONS_HPP
-#include <string>
+
 using std::string;
 
 void reverseString(string s);
