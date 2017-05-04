@@ -85,6 +85,8 @@ void University::printPersonVector() {
   }
 }
 
+// prompts the user for a student or instructor and runs the appropriate do_work
+// function for a Person
 void handleDoWork() {
   char userLetter;
   bool carryOn = true;
