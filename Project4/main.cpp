@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 #include "monstersqueue.hpp"
+#include "monsterstack.hpp"
 #include "creature.hpp"
 #include "menu.hpp"
 
@@ -17,6 +18,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+void playerOneChoice(int);
+
 int main() {
   srand ( time(NULL) );
 
@@ -27,6 +30,7 @@ int main() {
   int playerOneCreatureChoice, playerTwoCreatureChoice;
 
   MonstersQueue playerOneQueue, playerTwoQueue;
+  MonsterStack playerOneStack, playerTwoStack;
 
   cout << "Let's start the monster battle tournament. " << endl;
   monstersPerTeam = checkNumber("How many monsters should be on each team? ");
@@ -94,13 +98,20 @@ int main() {
     int pTwoAttack = playerTwoBattle->attackRollDie();
     playerOneBattle->defendRollDie(pTwoAttack);
 
+
     // depending on who wins we can add the losers to the loser stack
     if(playerOneBattle->getCreatureStrength() > playerTwoBattle->getCreatureStrength()) {
       cout << "player one wins";
+      playerTwoStack.addToStack(playerTwoBattle);
+      cout << "player two's monster added to the loser stack" << endl;
     } else if(playerOneBattle->getCreatureStrength() < playerTwoBattle->getCreatureStrength()) {
       cout << "player two wins";
+      playerOneStack.addToStack(playerOneBattle);
+      cout << "player one's monster added to the loser stack";
     } else if(playerOneBattle->getCreatureStrength() == playerTwoBattle->getCreatureStrength()) {
       cout << "the game is a tie. both players are gone";
+      playerOneStack.addToStack(playerOneBattle);
+      playerTwoStack.addToStack(playerTwoBattle);
     }
 
     counter++;

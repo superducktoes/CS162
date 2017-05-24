@@ -44,17 +44,3 @@ void MonstersQueue::addToQueue(Creature* c) {
     tail = node;
   }
 }
-
-MonstersQueue::~MonstersQueue() {
-  QueueNode *deleteNode = head;
-  bool carryOn = true;
-
-  do {
-    if(deleteNode == tail) {
-      carryOn = false;
-    }
-    QueueNode* tempNode = deleteNode;
-    deleteNode = deleteNode->next;
-    delete tempNode;
-  } while(carryOn == true);
-}
