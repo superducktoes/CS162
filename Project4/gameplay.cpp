@@ -27,6 +27,8 @@ void Gameplay::playGame() {
   srand ( time(NULL) );
   playerOneScore = 0;
   playerTwoScore = 0;
+  int strengthIncrease; // use this later on to figure out how much strength to add to a monster
+
   cout << "Let's start the monster battle tournament. " << endl;
   monstersPerTeam = checkNumber("How many monsters should be on each team? ");
 
@@ -102,11 +104,17 @@ void Gameplay::playGame() {
       playerOneScore = playerOneScore + 2;
       loserStack.addToStack(playerTwoBattle);
       cout << "\nPlayer two's monster added to the loser stack" << endl;
+      cout << "\nPlayer one's monster has had their strength increased by 3 for winning " << endl;
+      strengthIncrease = playerOneBattle->getCreatureStrength() + 3;
+      playerOneBattle->setCreatureStrength(strengthIncrease);
     } else if(playerOneBattle->getCreatureStrength() < playerTwoBattle->getCreatureStrength()) {
       cout << "\nPlayer Two Wins! " << endl;
       playerTwoScore = playerTwoScore + 2;
       loserStack.addToStack(playerOneBattle);
       cout << "\nPlayer one's monster added to the loser stack" << endl;
+      cout << "\nPlayer two's monster has had their strength increased by 3 for winning " << endl;
+      strengthIncrease = playerTwoBattle->getCreatureStrength() + 3;
+      playerTwoBattle->setCreatureStrength(strengthIncrease);
     } else if(playerOneBattle->getCreatureStrength() == playerTwoBattle->getCreatureStrength()) {
       cout << "\nThe round is a tie! Both monsters are added to the losers pile. "<< endl;
       loserStack.addToStack(playerOneBattle);
@@ -120,6 +128,9 @@ void Gameplay::playGame() {
 }
 
 void Gameplay::compareScore() {
+  cout << "Player One Score: " << playerOneScore << endl;
+  cout << "Player Two Score: " << playerTwoScore << endl;
+
   if(playerOneScore > playerTwoScore) {
     cout << "Player One wins the tournament! " << endl;
   } else if(playerTwoScore > playerOneScore) {

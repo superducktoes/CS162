@@ -12,7 +12,18 @@ MonsterStack::MonsterStack() {
 }
 
 MonsterStack::~MonsterStack() {
-  cout << "destructor called" << endl;
+  MonsterLosers *deleteNode = head;
+  bool carryOn = true;
+
+  // loop through deleting nodes until we hit the -1
+  do{
+    if(deleteNode == NULL) {
+      carryOn = false;
+    }
+    MonsterLosers* tempNode = deleteNode;
+    deleteNode = deleteNode->next;
+    delete tempNode;
+  } while(carryOn == true);
 }
 // add the losing monster to the stack
 void MonsterStack::addToStack(Creature* c) {
@@ -23,7 +34,6 @@ void MonsterStack::addToStack(Creature* c) {
 
 Creature* MonsterStack::removeFromStack() {
   if(head == NULL) {
-    cout << "the stack is empty";
     return 0;
   } else {
     MonsterLosers *tempNode = head;

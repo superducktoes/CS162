@@ -11,6 +11,21 @@ MonstersQueue::MonstersQueue() {
     tail = NULL;
 }
 
+MonstersQueue::~MonstersQueue() {
+  QueueNode *deleteNode = head;
+  bool carryOn = true;
+
+  // loop through deleting nodes until we hit the -1
+  do{
+    if(deleteNode == NULL) {
+      carryOn = false;
+    }
+    QueueNode* tempNode = deleteNode;
+    deleteNode = deleteNode->next;
+    delete tempNode;
+  } while(carryOn == true);
+}
+
 Creature* MonstersQueue::getFront() {
   if(head == NULL) {
     cout << "The player's queue is empty. " << endl;

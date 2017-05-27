@@ -1,3 +1,19 @@
+/*******************************************************************************
+  *
+  * Author: Nick Roy
+  * Date: 5/27/2017
+  *
+  * Description: Project 4 extends project 3 and adds a tournament style gameplay.
+  * Includes files from project 3 as well as some lines of code from labs 6 and 7 for the
+  * stack and queue functions.
+  *
+  * In the game eachplayer is prompter to pick their lineup of monsters and then
+  * the game will automatically play for each player. Once the games are done the
+  * winner will be displayed and the score. Players will be prompted to play again
+  * or quit after that and show the losing monsters.
+  *
+  *****************************************************************************/
+  
 #include <iostream>
 #include "gameplay.hpp"
 
@@ -28,6 +44,7 @@ int main() {
       carryOn = false;
     } else {
       cout << "Invalid entry... Restarting game " << endl;
+      playNewGame.showLosingMonsters();
     }
   } while (carryOn == true);
   return 0;

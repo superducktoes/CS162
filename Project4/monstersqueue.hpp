@@ -24,7 +24,7 @@ protected:
 public:
   // constructor and destructor
   MonstersQueue();
-//  ~MonstersQueue();
+  ~MonstersQueue();
   // remove the top item in the list
   Creature* getFront();
   // functions to add to and show the list
