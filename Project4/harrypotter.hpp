@@ -15,7 +15,7 @@ class HarryPotter: public Creature {
 private:
   bool regenerate = true;
 public:
-  HarryPotter(string s) : Creature(s) {};
+  HarryPotter(string s,string p) : Creature(s,p) {};
   int attackRollDie();
   int defendRollDie(int);
 };

@@ -12,7 +12,7 @@
 
 class Barbarian: public Creature {
 public:
-  Barbarian(string s) : Creature(s) {};
+  Barbarian(string s, string p) : Creature(s,p) {};
   int attackRollDie();
   int defendRollDie(int);
 };

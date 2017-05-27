@@ -15,7 +15,7 @@
 class Medusa: public Creature {
 
 public:
-  Medusa(string s) : Creature(s) {};
+  Medusa(string s, string p) : Creature(s,p) {};
   int attackRollDie();
   int defendRollDie(int);
 };

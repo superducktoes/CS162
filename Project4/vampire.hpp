@@ -13,7 +13,7 @@
 
 class Vampire: public Creature {
 public:
-  Vampire(string s) : Creature(s) {};
+  Vampire(string s, string p) : Creature(s,p) {};
   int attackRollDie();
   int defendRollDie(int);
 };

@@ -13,7 +13,7 @@
 
 class BlueMen: public Creature {
 public:
-  BlueMen(string s) : Creature(s) {};
+  BlueMen(string s,string p) : Creature(s,p) {};
   int attackRollDie();
   int defendRollDie(int);
 };

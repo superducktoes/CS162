@@ -1,5 +1,5 @@
 program_name = project_4
-object_files = main.o creature.o barbarian.o vampire.o harrypotter.o bluemen.o medusa.o menu.o monstersqueue.o monsterstack.o
+object_files = main.o creature.o barbarian.o vampire.o harrypotter.o bluemen.o medusa.o menu.o monstersqueue.o monsterstack.o gameplay.o
 
 project_4: $(object_files)
 	g++ -std=c++11 $(object_files) -o $(program_name)
@@ -33,6 +33,9 @@ monstersqueue.o: monstersqueue.cpp
 
 monsterstack.o: monsterstack.cpp
 	g++ -c -std=c++11 monsterstack.cpp
+
+gameplay.o: gameplay.cpp
+	g++ -c -std=c++11 gameplay.cpp
 
 clean:
 	rm *.o
