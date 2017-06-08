@@ -10,8 +10,18 @@ defaultRoom::defaultRoom(string n) {
     roomName = n;
   } else if(n == "mainlobby") {
     roomName = n;
+  } else if(n == "reception") {
+    roomName = n;
+  } else if(n == "yourdesk") {
+    roomName = n;
+  } else if(n == "darkhallway") {
+    roomName = n;
+  } else if(n == "bossoffice") {
+    roomName = n;
+  } else if(n == "breakroom") {
+    roomName = n;
   }
-  
+
   right = NULL;
   left = NULL;
   up = NULL;

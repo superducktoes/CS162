@@ -7,12 +7,22 @@ using std::string;
 
 #include "parkingLot.hpp"
 #include "mainLobby.hpp"
+#include "reception.hpp"
+#include "yourdesk.hpp"
+#include "darkhallway.hpp"
+#include "bossoffice.hpp"
+#include "breakroom.hpp"
 
 class GamePlay {
 private:
   defaultRoom* parkingLot;
   defaultRoom* mainLobby;
   defaultRoom* currentLocation;
+  defaultRoom* reception;
+  defaultRoom* yourdesk;
+  defaultRoom* darkhallway;
+  defaultRoom* bossoffice;
+  defaultRoom* breakroom;
 
   string playerName;
   bool gameOver;

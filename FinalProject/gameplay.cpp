@@ -10,8 +10,24 @@ using std::string;
 GamePlay::GamePlay(string n) {
   parkingLot = new ParkingLot("parkinglot");
   mainLobby = new MainLobby("mainlobby");
+  reception = new Reception("reception");
+  yourdesk = new YourDesk("yourdesk");
+  darkhallway = new DarkHallway("darkhallway");
+  bossoffice = new BossOffice("bossoffice");
+  breakroom = new BreakRoom("breakroom");
+
   parkingLot->linkRoom(mainLobby,'r');
   mainLobby->linkRoom(parkingLot, 'l');
+  mainLobby->linkRoom(reception,'r');
+  reception->linkRoom(mainLobby,'l');
+  reception->linkRoom(yourdesk,'u');
+  yourdesk->linkRoom(reception,'d');
+  reception->linkRoom(darkhallway,'d');
+  darkhallway->linkRoom(reception,'u');
+  darkhallway->linkRoom(bossoffice,'l');
+  bossoffice->linkRoom(darkhallway,'r');
+  bossoffice->linkRoom(breakroom,'l');
+  breakroom->linkRoom(bossoffice,'r');
   currentLocation = parkingLot;
 
   playerName = n;
@@ -21,7 +37,7 @@ GamePlay::GamePlay(string n) {
 // keeps track of the number of turns the player took and then suggest hints
 void GamePlay::gameHints() {
   if(turnCounter == 9) {
-    cout << "If you haven't looked in the parking lot already there may be " 
+    cout << "If you haven't looked in the parking lot already there may be "
 	 << "something out there that you can use. " << endl;
   }
 }
@@ -48,13 +64,17 @@ void interactRoom(string room) {
 void GamePlay::startGame() {
   char direction;
   do {
-    
+
     direction = currentLocation->playRoom();
     // get the direction to move in next
     if(direction == 'r') {
       currentLocation = currentLocation->getRightRoom();
     } else if(direction == 'l') {
       currentLocation = currentLocation->getLeftRoom();
+    } else if(direction == 'u') {
+      currentLocation = currentLocation->getUpRoom();
+    } else if(direction == 'd') {
+      currentLocation = currentLocation->getDownRoom();
     } else if(direction == 'x') {
       string roomName = currentLocation->getRoomName();
       exploreRoom(roomName);
@@ -62,5 +82,5 @@ void GamePlay::startGame() {
     turnCounter++;
     gameHints();
   } while(direction != 'q');
-  cout << "thanks for playing!" << endl; 
+  cout << "thanks for playing!" << endl;
 }
