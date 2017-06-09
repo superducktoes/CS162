@@ -5,6 +5,9 @@ using std::cin;
 using std::endl;
 using std::string;
 
+// default constructor creates a room with a name for the room. this name acts as a key
+// to identify the room the player is in if they are exploring or interacting with the room.
+// additional attributes can be added to the room as needed.
 defaultRoom::defaultRoom(string n) {
   if(n == "parkinglot") {
     roomName = n;
@@ -28,7 +31,7 @@ defaultRoom::defaultRoom(string n) {
   down = NULL;
 }
 
-//this is where we link the rooms
+//link the rooms
 void defaultRoom::linkRoom(defaultRoom* r, char d) {
   if(d == 'r') {
     right = r;

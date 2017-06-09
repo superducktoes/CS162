@@ -25,9 +25,15 @@ private:
   defaultRoom* breakroom;
 
   string playerName;
-  bool gameOver;
   std::vector<string> playerInventory;
   int turnCounter;
+
+  bool carryOn;
+  
+  bool usbPluggedIn;
+  bool foundUsbStick;
+  bool foundCoffeeCup;
+  
 public:
   GamePlay(string n);
   void startGame();

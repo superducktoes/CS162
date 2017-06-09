@@ -7,20 +7,21 @@ using std::endl;
 char ParkingLot::playRoom() {
   userChoice = 0;
 
-  cout << "You are in the parking lot. " << endl;
+  cout << "\nYou are in the parking lot. " << endl;
   cout << "What do you want to do? " << endl;
-  cout << "1. Go inside to the main lobby. " << endl;
-  cout << "2. Explore the parking lot. " << endl;
-  cout << "3. Quit the game. " << endl;
+  cout << "1. Explore the parking lot. " << endl;
+  cout << "2. Go inside to the main lobby. " << endl;
+  cout << "0. Quit the game. " << endl;
   cin >> userChoice;
-  if(userChoice == 1) {
-    cout << "Heading inside to the main lobby. " << endl;
+  
+  if(userChoice == 2) {
+    cout << "\nHeading inside to the main lobby. " << endl;
     return 'r';
-  } else if(userChoice == 2) {
+  } else if(userChoice == 1) {
     return 'x';
-  } else if(userChoice == 3) {
+  } else if(userChoice == 0) {
     return 'q';
   } else {
-    cout << "enter a number between 1 and 2. " << endl;
+    cout << "\nPlease enter a number between 0 and 2.... " << endl;
   }
 }
