@@ -127,11 +127,21 @@ void GamePlay::startGame() {
     }
     turnCounter++;
     gameHints();
-    
+
     // im sure there's a good reason this doesnt work in a do-while
     if(carryOn == false) {
       direction = 'q';
     }
   } while(direction != 'q');
   cout << "Thanks for playing!" << endl;
+
+  //deallocate the memory
+  delete parkingLot;
+  delete mainLobby;
+  delete reception;
+  delete yourdesk;
+  delete darkhallway;
+  delete bossoffice;
+  delete breakroom;
+
 }
