@@ -15,14 +15,15 @@
 
 int LoadedDie::returnLoadedRoll() {
 
-  int tempNum = 0;
-  int halfSides = (numberOfSides/2);
+  int randomTotal = sides;
+  int randomInt = (rand()%sides+1);
 
-  for(int i = 0; i < numberOfSides; i++) {
-    tempNum += 2 + rand() % numberOfSides;
+  if( (sides - randomInt) < (sides / 2) ) {
+    randomTotal = randomInt;
+  } else {
+    randomTotal = (sides - randomInt);
   }
 
-  tempNum = (tempNum/numberOfSides);
+  return randomTotal;
 
-  return tempNum;
 }
