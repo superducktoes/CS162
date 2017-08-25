@@ -54,89 +54,88 @@ void dLL::displayHeadNode() {
 // deletes the tail node and reassigns the last node not deleted.
 // loops through to find the node
 void dLL::deleteNodeTail() {
-  Node *tempNode = headNode;
-  if(tempNode == NULL) {
+  Node *tempNode;
+  if(tailNode == NULL) {
     cout << "the list is empty" << endl;
   } else {
-  while(tempNode->next != tailNode) {
-    tempNode = tempNode->next;
-  }
-  delete tailNode;
-  tempNode->next = NULL;
-  tailNode = tempNode;
+    tempNode = tailNode->previous;
+    delete tailNode;
+    tailNode = tempNode;
+    tailNode->next = NULL;
+
   }
 }
 
 // removes the first node and then re-assigns
 void dLL::deleteNodeHead() {
-  Node *tempNode = headNode;
-  if(tempNode == NULL) {
+  Node *tempNode;
+  if(headNode == NULL) {
     cout << "the list is empty" << endl;
   } else {
-    headNode = headNode->next;
-    delete tempNode;
+    tempNode = headNode->next;
+    delete headNode;
+
+    headNode = tempNode;
+    headNode->previous = NULL;
+
   }
 }
 
 // add a new node to the head and reassign the old node head. takes a double as an arg
 void dLL::addToHead(double v) {
+  Node *tempNode = new Node(v);
+  Node *currentNode = headNode;
 
-  Node *currentNode = new Node(v);
-
-  //if the head node is null we know the list is empty
-  //set the head and tail node
-  if(headNode == NULL) {
-    headNode = currentNode;
-    tailNode = currentNode;
+  if(currentNode == NULL) {
+    headNode = tempNode;
+    tailNode = tempNode;
   } else {
-    headNode->previous = currentNode;
-    currentNode->next = headNode;
-    headNode = currentNode;
+    currentNode->previous = tempNode;
+    tempNode->next = currentNode;
+    headNode = tempNode;
   }
 }
 
 // adds a node to the tail, if empty. if there is a node there we update the existing tail node
 void dLL::addToTail(double v) {
 
-  Node *currentNode = new Node(v);
+  Node *tempNode = new Node(v);
+  Node *currentNode = tailNode;
 
+  // check to see if the list is empty
   if(tailNode == NULL) {
-    headNode = currentNode;
-    tailNode = currentNode;
+    headNode = tempNode;
+    tailNode = tempNode;
   } else {
-    tailNode->next = currentNode;
-    currentNode->previous = tailNode;
-    tailNode = currentNode;
-
+    tailNode->next = tempNode;
+    tempNode->previous = currentNode;
+    tailNode = tempNode;
   }
 }
 
 // loop through and display the list forwards
 void dLL::displayNodesForward() {
-  Node *currentNode = headNode;
+  Node *tempNode = headNode;
 
-  if(currentNode == NULL) {
+  if(tempNode == NULL) {
     cout << "the list is empty" << endl;
+  } else {
+    while(tempNode != NULL) {
+      cout << tempNode->value << endl;
+      tempNode = tempNode->next;
+    }
   }
-
-  while(currentNode != NULL) {
-    cout << currentNode->value << "  ";
-    currentNode = currentNode->next;
-  }
-  cout << "\n\n";
 }
 
 // start from the tail and display all the nodes
 void dLL::displayNodesBackwards() {
-  Node *currentNode = tailNode;
-
-  if(currentNode == NULL) {
+  Node *tempNode = tailNode;
+  if(tempNode == NULL) {
     cout << "the list is empty" << endl;
+  } else {
+    while(tempNode != NULL) {
+      cout << tempNode->value << endl;
+      tempNode = tempNode->previous;
+    }
   }
-
-  while(currentNode != NULL) {
-    cout << currentNode->value << "  ";
-    currentNode = currentNode->previous;
-  }
-  cout << "\n\n";
 }
